@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config';
+import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
     test: {
@@ -6,4 +7,9 @@ export default defineConfig({
         environment: 'jsdom',
         setupFiles: ['vitest.setup.ts'],
     },
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        }
+    }
 });
